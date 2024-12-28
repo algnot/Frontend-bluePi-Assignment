@@ -1,8 +1,8 @@
 ## 📙 `Frontend-bluePi-Assignment` project guide
 
 - Link for production
-    - Frontend:
-    - Backend:
+    - Frontend: https://frontend-blue-pi-assignment-li2pxjsrx-algnots-projects.vercel.app/
+    - Backend: https://bluepi-be.tongla.dev
 - Backend Repository: https://github.com/algnot/Backend-bluePi-Assignment
 
 ### 📍 Dependencies
