@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <div className="container relative">
-      <div className={`top-14 right-10 cursor-pointer fixed`}>
+      <div className={`top-14 right-10 cursor-pointer fixed z-50`}>
         <Link href="/order">
           <ShoppingCartIcon className="h-8 w-8 text-gray-700 hover:text-gray-900" />
         </Link>
