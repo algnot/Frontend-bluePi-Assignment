@@ -1,6 +1,9 @@
 ## 📙 `Frontend-bluePi-Assignment` project guide
 
-นี่เป็น project rust project แรกของผมนะคับ โครงสร้าง project เลยจะเหมือนของ go หน่อย ผมเขียน unit test ไม่ทัน ;-; 
+- Link for production
+    - Frontend:
+    - Backend:
+- Backend Repository: https://github.com/algnot/Backend-bluePi-Assignment
 
 ### 📍 Dependencies
 - ✅ node
