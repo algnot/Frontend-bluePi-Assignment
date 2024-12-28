@@ -109,7 +109,7 @@ const PaymentPage = () => {
       cancelButtonText: "No, go back",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await client.cancelOrder(orderId);
+        await client.cancelOrder(orderId ?? "");
         router.push("/order/" + orderId);
       }
     });
