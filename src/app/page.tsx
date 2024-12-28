@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <div className="container relative">
-      <div className="absolute top-14 right-10 cursor-pointer">
+      <div className={`top-14 right-10 cursor-pointer fixed`}>
         <Link href="/order">
           <ShoppingCartIcon className="h-8 w-8 text-gray-700 hover:text-gray-900" />
         </Link>
@@ -40,8 +40,7 @@ export default function Home() {
             <PopupProduct initQuantity={getInitialQuantity(selectedProduct.id)} product={selectedProduct} onClose={() => setSelectedProduct(undefined)} onAddToCart={addToCart} />
           )
         }
-
-      </div>      
+      </div>
     </div>
   );
 }
