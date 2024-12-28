@@ -11,8 +11,8 @@ const OrderPage = () => {
   const client = new Client();
   const router = useRouter();
   const params = useParams();
-  const orderId = params.orderId;
-  const [order, _] = useFetch(() => client.getOrder(orderId));
+  const orderId = Array.isArray(params.orderId) ? params.orderId[0] : params.orderId;
+  const [order, _] = useFetch(() => (orderId ? client.getOrder(orderId) : Promise.resolve(null)));
 
   return (
     <div className="h-[96vh] flex flex-col container">

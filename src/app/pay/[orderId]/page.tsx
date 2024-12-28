@@ -13,8 +13,8 @@ const PaymentPage = () => {
   const client = new Client();
   const router = useRouter();
   const params = useParams();
-  const orderId = params.orderId;
-  const [order, _] = useFetch(() => client.getOrder(orderId));
+  const orderId = Array.isArray(params.orderId) ? params.orderId[0] : params.orderId;
+  const [order, _] = useFetch(() => (orderId ? client.getOrder(orderId) : Promise.resolve(null)));
 
   const [userCoin, setUserCoin] = useState<Coin[]>([
     { name: "1 THB Coin", key: "coin_1", value: 1, quantity: 0 },
