@@ -13,7 +13,7 @@ export const getStatusBadge = (status: string): string => {
   let badgeColor = "";
   switch (status.toLocaleLowerCase()) {
     case "created":
-      badgeColor = "bg-yellow-500";
+      badgeColor = "bg-gray-500";
       break;
     case "paid":
       badgeColor = "bg-blue-500";

@@ -23,6 +23,15 @@ body {
   background-color: #efece5;
 }
 
+.bg-gray-500 {
+  background-color: gray;
+}
+
+.bg-blue-500 {
+  background-color: blue;
+}
+
+
 @media only screen and (max-width: 800px){
   .container{
     width: 100vw;
