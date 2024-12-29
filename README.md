@@ -10,7 +10,7 @@
 - ✅ npm
 - 📄 หรือสามารถรัน project ผ่าน docker-compose ได้ครับ 
 
-### 📁 Setup project with docker
+### 📁 Setup project
 - run project with docker
 ```bash
     1: 📄 npm install
