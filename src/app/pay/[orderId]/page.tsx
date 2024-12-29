@@ -63,6 +63,10 @@ const PaymentPage = () => {
   };
 
   const handleCompletePayment = () => {
+    if(totalAmount < (order?.total ?? 0)) {
+      return
+    }
+
     handleCanceledOrder();
     Swal.fire({
       title: "Confirm Payment",
