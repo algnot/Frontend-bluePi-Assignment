@@ -47,7 +47,7 @@ const OrderPage = () => {
             >
               <div className="w-16 h-16 relative mr-4">
                 <img
-                  src={`${process.env.NEXT_PUBLIC_BACKEND_PATH}/uploader/image/${item.image_id}`}
+                  src="/the-box-0.webp"
                   alt={item.name}
                   className="rounded-lg object-cover"
                 />

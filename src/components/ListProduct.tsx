@@ -83,7 +83,7 @@ export default function ListProduct({
               <div className="relative w-full h-[150px] mb-2">
                 {" "}
                 <img
-                  src={`${process.env.NEXT_PUBLIC_BACKEND_PATH}/uploader/image/${product.image_id}`}
+                  src="/the-box-0.webp"
                   width={150}
                   height={150}
                   alt={product.name}

@@ -4,8 +4,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const handleError = (e: unknown) => {
-    if(axios.isAxiosError(e)){
-        if(e.response && e.response.data && e.response.data.message) {
+    if (axios.isAxiosError(e)) {
+        if (e.response && e.response.data && e.response.data.message) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -38,8 +38,23 @@ const client = axios.create({
 export class Client {
     async getAllProduct(): Promise<ProductsResponse | undefined> {
         try {
-            const response = await client.get("/product/list");
-            return response.data;
+            return {
+                products: [{
+                    id: "product0",
+                    name: "ไก่ทอดแสนอร่อย",
+                    description: "ไก่ทอดแสนอร่อย set 1",
+                    price: 299,
+                    quantity: 10,
+                    type_id: "type0",
+                    recommend: false,
+                    active: false,
+                    image_id: null,
+                    created_by: "",
+                    updated_by: "",
+                    created_at: "",
+                    updated_at: ""
+                }]
+            };
         } catch (e) {
             return handleError(e);
         }
@@ -47,8 +62,18 @@ export class Client {
 
     async getAllProductType(): Promise<ProductTypeListResponse | undefined> {
         try {
-            const response = await client.get("/product-type/list");
-            return response.data;
+            return {
+                product_type_list: [{
+                    id: "type0",
+                    name: "ไก่ทอด",
+                    active: false,
+                    image_id: "",
+                    created_by: "",
+                    updated_by: "",
+                    created_at: "",
+                    updated_at: ""
+                }]
+            };
         } catch (e) {
             return handleError(e);
         }
@@ -63,7 +88,7 @@ export class Client {
         }
     }
 
-    async cancelOrder(name: string): Promise<{id: number} | undefined> {
+    async cancelOrder(name: string): Promise<{ id: number } | undefined> {
         try {
             const response = await client.post(`/order/cancel`, {
                 sale_order_name: name

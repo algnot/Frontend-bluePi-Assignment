@@ -65,7 +65,7 @@ export default function PopupProduct({
         </button>
         <div className="flex justify-center mb-4">
           <img
-            src={`${process.env.NEXT_PUBLIC_BACKEND_PATH}/uploader/image/${product.image_id}`}
+            src="/the-box-0.webp"
             alt={product.name}
             className="max-w-full object-cover"
             width={320}
@@ -109,7 +109,7 @@ export default function PopupProduct({
           <div className="flex items-center space-x-4">
             <div className="flex-shrink-0">
               <img
-                src={`${process.env.NEXT_PUBLIC_BACKEND_PATH}/uploader/image/${product.image_id}`}
+                src="/the-box-0.webp"
                 alt={product.name}
                 className="rounded-lg object-cover"
                 width={80}

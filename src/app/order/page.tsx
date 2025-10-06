@@ -8,17 +8,17 @@ import { Client } from "@/common/client";
 import { CreateOrderLineRequest } from "@/types/order";
 import { useRouter } from "next/navigation";
 
-
 const OrderPage = () => {
   const router = useRouter();
-  const { cartItems, updateQuantity, removeFromCart, clearCart } = useContext(CartContext);
+  const { cartItems, updateQuantity, removeFromCart, clearCart } =
+    useContext(CartContext);
   const [loading, setLoading] = useState(false);
   const client = new Client();
 
   const calculateTotal = () => {
     return cartItems.reduce(
       (sum, item) => sum + item.product.price * item.quantity,
-      0
+      0,
     );
   };
 
@@ -35,30 +35,26 @@ const OrderPage = () => {
   };
 
   const onCheckout = async () => {
-    if(cartItems.length == 0) {
-      return
+    if (cartItems.length == 0) {
+      return;
     }
     setLoading(true);
 
-    const orderLineRequest: CreateOrderLineRequest[] = [];
-    cartItems.forEach((value) => {
-      orderLineRequest.push({
-        product_id: value.product.id,
-        quantity: value.quantity
-      })
-    })
+    try {
+      // Calculate total amount
+      const totalAmount = calculateTotal();
 
-    const order = await client.createOrder({
-      order_line: orderLineRequest
-    })
+      // Generate a simple order ID for demo
+      const orderId = `ORDER_${Date.now()}`;
 
-    if(!order) {
-      return
+      // Redirect directly to payment page with total amount
+      router.push(`/pay/${orderId}?amount=${totalAmount}`);
+    } catch (error) {
+      console.error("Checkout failed:", error);
+    } finally {
+      setLoading(false);
     }
-    
-    clearCart();
-    router.push(`/pay/${order.sale_order_name}`);
-  }
+  };
 
   return (
     <div className="h-[96vh] flex flex-col container">
@@ -67,12 +63,7 @@ const OrderPage = () => {
           Back
         </Link>
         <div className="w-16 h-16 relative">
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            fill
-            objectFit="contain"
-          />
+          <Image src="/logo.png" alt="Logo" fill objectFit="contain" />
         </div>
       </div>
       <div className="mb-8">
@@ -91,7 +82,7 @@ const OrderPage = () => {
             >
               <div className="w-16 h-16 relative mr-4">
                 <img
-                  src={`${process.env.NEXT_PUBLIC_BACKEND_PATH}/uploader/image/${item.product.image_id}`}
+                  src="/the-box-0.webp"
                   alt={item.product.name}
                   className="rounded-lg object-cover"
                 />
@@ -103,14 +94,16 @@ const OrderPage = () => {
               <div className="flex items-center">
                 <button
                   className={`bg-gray-300 rounded-l-md px-4 py-2 ${
-                    item.quantity <= 0 ? "opacity-50 cursor-not-allowed" : " hover:bg-gray-400"
+                    item.quantity <= 0
+                      ? "opacity-50 cursor-not-allowed"
+                      : " hover:bg-gray-400"
                   }`}
                   onClick={
                     item.quantity > 0
                       ? () =>
                           handleQuantityChange(
                             item.product.id,
-                            Math.max(0, item.quantity - 1)
+                            Math.max(0, item.quantity - 1),
                           )
                       : () => {}
                   }
@@ -129,7 +122,7 @@ const OrderPage = () => {
                       ? () =>
                           handleQuantityChange(
                             item.product.id,
-                            item.quantity + 1
+                            item.quantity + 1,
                           )
                       : () => {}
                   }
@@ -153,10 +146,15 @@ const OrderPage = () => {
           <p className="text-xl">Total</p>
           <p className="text-xl font-bold">{displayMoney(calculateTotal())}</p>
         </div>
-        <button onClick={onCheckout} className={`${loading || cartItems.length == 0 ? "bg-gray-400 cursor-not-allowed": "bg-[#FFEB3B]"} text-black rounded-lg py-3 w-full mt-4`}>
-          {
-            loading ? "loading.." : "Checkout"
-          }
+        <button
+          onClick={onCheckout}
+          className={`${
+            loading || cartItems.length == 0
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-[#FFEB3B]"
+          } text-black rounded-lg py-3 w-full mt-4`}
+        >
+          {loading ? "loading.." : "Checkout"}
         </button>
       </div>
     </div>
