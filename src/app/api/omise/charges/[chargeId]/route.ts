@@ -5,10 +5,10 @@ const OMISE_API_BASE = 'https://api.omise.co';
 
 export async function GET(
     request: NextRequest,
-    { params }: { params: { chargeId: string } }
+    { params }: { params: Promise<{ chargeId: string }> }
 ) {
     try {
-        const { chargeId } = params;
+        const { chargeId } = await params;
 
         const response = await fetch(`${OMISE_API_BASE}/charges/${chargeId}`, {
             method: 'GET',
