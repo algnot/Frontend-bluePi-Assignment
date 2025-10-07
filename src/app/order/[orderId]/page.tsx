@@ -11,8 +11,12 @@ const OrderPage = () => {
   const client = new Client();
   const router = useRouter();
   const params = useParams();
-  const orderId = Array.isArray(params.orderId) ? params.orderId[0] : params.orderId;
-  const [order, _] = useFetch(() => (orderId ? client.getOrder(orderId) : Promise.resolve(null)));
+  const orderId = Array.isArray(params.orderId)
+    ? params.orderId[0]
+    : params.orderId;
+  const [order, _] = useFetch(() =>
+    orderId ? client.getOrder(orderId) : Promise.resolve(null),
+  );
 
   return (
     <div className="h-[96vh] flex flex-col container">
@@ -21,7 +25,7 @@ const OrderPage = () => {
           Back
         </Link>
         <div className="w-16 h-16 relative">
-          <Image src="/logo.png" alt="Logo" fill objectFit="contain" />
+          <Image src="/logo.jpg" alt="Logo" fill objectFit="contain" />
         </div>
       </div>
       <div className="mb-8">
@@ -29,7 +33,7 @@ const OrderPage = () => {
         <p className="text-lg text-gray-500">#{order?.sale_order_name}</p>
         <span
           className={`${getStatusBadge(
-            order?.status ?? ""
+            order?.status ?? "",
           )} text-white text-xs font-bold mr-2 px-2.5 py-0.5 rounded`}
         >
           {(order?.status ?? "").toUpperCase()}
@@ -47,7 +51,7 @@ const OrderPage = () => {
             >
               <div className="w-16 h-16 relative mr-4">
                 <img
-                  src="/the-box-0.webp"
+                  src="/the-box-0.jpeg"
                   alt={item.name}
                   className="rounded-lg object-cover"
                 />

@@ -39,7 +39,7 @@ export default function ListProduct({
           <span
             className={`${
               selectedType === "all"
-                ? "bg-[#c8161d] text-white"
+                ? "bg-[#8c532a] text-white"
                 : "bg-[#f8f8f7] hover:bg-gray-200 cursor-pointer"
             } rounded-xl p-4 flex flex-col items-center justify-center`}
             onClick={() => handleFilterChange("all")}
@@ -51,7 +51,7 @@ export default function ListProduct({
               key={type.id}
               className={`${
                 selectedType === type.id
-                  ? "bg-[#c8161d] text-white"
+                  ? "bg-[#8c532a] text-white"
                   : "bg-[#f8f8f7] hover:bg-gray-200 cursor-pointer"
               } rounded-xl p-4 flex flex-col items-center justify-center`}
               onClick={() => handleFilterChange(type.id)}
@@ -73,7 +73,7 @@ export default function ListProduct({
               key={product.id}
               className={`${
                 selectedProduct?.id == product.id
-                  ? "bg-[#c8161d] text-white"
+                  ? "bg-[#8c532a] text-white"
                   : "bg-[#f8f8f7] hover:bg-gray-200 cursor-pointer"
               } rounded-xl p-4 flex flex-col items-center justify-center relative ${
                 product.quantity === 0 ? "opacity-50 pointer-events-none" : ""
@@ -83,7 +83,7 @@ export default function ListProduct({
               <div className="relative w-full h-[150px] mb-2">
                 {" "}
                 <img
-                  src="/the-box-0.webp"
+                  src="/the-box-0.jpeg"
                   width={150}
                   height={150}
                   alt={product.name}

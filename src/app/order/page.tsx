@@ -63,7 +63,7 @@ const OrderPage = () => {
           Back
         </Link>
         <div className="w-16 h-16 relative">
-          <Image src="/logo.png" alt="Logo" fill objectFit="contain" />
+          <Image src="/logo.jpg" alt="Logo" fill objectFit="contain" />
         </div>
       </div>
       <div className="mb-8">
@@ -82,7 +82,7 @@ const OrderPage = () => {
             >
               <div className="w-16 h-16 relative mr-4">
                 <img
-                  src="/the-box-0.webp"
+                  src="the-box-0.jpeg"
                   alt={item.product.name}
                   className="rounded-lg object-cover"
                 />

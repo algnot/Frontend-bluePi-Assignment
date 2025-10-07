@@ -10,7 +10,10 @@
 }
 
 body {
-  background-color: #efece5;
+  background-image: url('/bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .container{
@@ -20,7 +23,6 @@ body {
   flex-direction: column;
   padding: 0 30px;
   margin-bottom: 80px;
-  background-color: #efece5;
 }
 
 .bg-gray-500 {

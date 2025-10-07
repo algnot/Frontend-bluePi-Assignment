@@ -12,10 +12,14 @@ import { useState } from "react";
 export default function Home() {
   const { cartItems, addToCart } = useCart();
   const [product, _] = useFetch(new Client().getAllProduct);
-  const [selectedProduct, setSelectedProduct] = useState<Product | undefined>(undefined);
+  const [selectedProduct, setSelectedProduct] = useState<Product | undefined>(
+    undefined,
+  );
 
   const getInitialQuantity = (productId: string) => {
-    const existingItem = cartItems.find((item) => item.product.id === productId);
+    const existingItem = cartItems.find(
+      (item) => item.product.id === productId,
+    );
     return existingItem?.quantity ?? 1;
   };
 
@@ -30,16 +34,23 @@ export default function Home() {
         </span>
       </div>
 
-      <div className="text-6xl mt-20 text-[#c8161d]">Hey,</div>
+      <div className="text-6xl mt-20 text-[#8c532a]">Hey,</div>
       <div className="text-5xl mt-5">what's up?</div>
       <div className="mt-10">
-        <ListProduct products={product?.products ?? []} selectedProduct={selectedProduct} onSelectProduct={(p) => setSelectedProduct(p)} />
+        <ListProduct
+          products={product?.products ?? []}
+          selectedProduct={selectedProduct}
+          onSelectProduct={(p) => setSelectedProduct(p)}
+        />
 
-        {
-          selectedProduct && (
-            <PopupProduct initQuantity={getInitialQuantity(selectedProduct.id)} product={selectedProduct} onClose={() => setSelectedProduct(undefined)} onAddToCart={addToCart} />
-          )
-        }
+        {selectedProduct && (
+          <PopupProduct
+            initQuantity={getInitialQuantity(selectedProduct.id)}
+            product={selectedProduct}
+            onClose={() => setSelectedProduct(undefined)}
+            onAddToCart={addToCart}
+          />
+        )}
       </div>
     </div>
   );

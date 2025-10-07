@@ -41,9 +41,9 @@ export class Client {
             return {
                 products: [{
                     id: "product0",
-                    name: "ไก่ทอดแสนอร่อย",
-                    description: "ไก่ทอดแสนอร่อย set 1",
-                    price: 299,
+                    name: "บัตร",
+                    description: "บัตร",
+                    price: 499,
                     quantity: 10,
                     type_id: "type0",
                     recommend: false,
@@ -65,7 +65,7 @@ export class Client {
             return {
                 product_type_list: [{
                     id: "type0",
-                    name: "ไก่ทอด",
+                    name: "บัตร",
                     active: false,
                     image_id: "",
                     created_by: "",

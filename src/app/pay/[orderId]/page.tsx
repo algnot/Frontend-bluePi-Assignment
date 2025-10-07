@@ -266,7 +266,7 @@ const PaymentPage = () => {
           Back
         </Link>
         <div className="w-16 h-16 relative">
-          <Image src="/logo.png" alt="Logo" fill objectFit="contain" />
+          <Image src="/logo.jpg" alt="Logo" fill objectFit="contain" />
         </div>
       </div>
 
